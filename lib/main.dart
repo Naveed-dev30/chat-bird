@@ -18,6 +18,7 @@ class ChatBirdApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: DI.sl<AppRouter>().routerConfig,
     );
   }
