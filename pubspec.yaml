@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Dynamic Injections
+  get_it: ^7.2.0
+
   #ScreenUtil
   flutter_screenutil: ^5.6.0
 
@@ -34,4 +37,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - env/.env
+    - env/
