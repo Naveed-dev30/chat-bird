@@ -10,5 +10,5 @@ class FilePath {
   static String APP_ICON = 'assets/icons/app_icon/chat.png';
 
   ///Images
-  static String SPLASH_SCREEN_IMAGE = 'assets/images/splash/splash_image.png';
+  static String SPLASH_SCREEN_IMAGE = 'assets/images/splash/splash_image.jpg';
 }

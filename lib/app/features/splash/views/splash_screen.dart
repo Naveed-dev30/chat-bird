@@ -1,3 +1,4 @@
+import 'package:chat_bird/app/const/file_path_consts.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -5,9 +6,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Splash Screen"),
+        child: Image.asset(FilePath.SPLASH_SCREEN_IMAGE),
       ),
     );
   }
