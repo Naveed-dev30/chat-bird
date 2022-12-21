@@ -41,3 +41,8 @@ flutter:
 
   assets:
     - env/
+    - assets/
+    - assets/icons/
+    - assets/icons/app_icon/
+    - assets/images/
+    - assets/images/splash/
