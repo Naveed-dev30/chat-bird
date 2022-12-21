@@ -7,7 +7,14 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset(FilePath.SPLASH_SCREEN_IMAGE),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Image.asset(
+          FilePath.SPLASH_SCREEN_IMAGE,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }
