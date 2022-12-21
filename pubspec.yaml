@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Routing
+  go_router: ^6.0.0
+
   #Dynamic Injections
   get_it: ^7.2.0
 
