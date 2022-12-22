@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRouter {
   void push(BuildContext context, String routeName);
   void pop(BuildContext context);
+  void replaceAll(BuildContext context, String routeName);
 
   RouterConfig<Object>? get routerConfig;
 }
@@ -23,4 +24,9 @@ class GoRouterHelper implements AppRouter {
 
   @override
   RouterConfig<Object>? get routerConfig => GoRoutes.routes;
+
+  @override
+  void replaceAll(BuildContext context, String routeName) {
+    context.go(routeName);
+  }
 }
