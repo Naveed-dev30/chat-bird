@@ -1,7 +1,6 @@
+import 'package:chat_bird/app/helpers/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../features/splash/views/splash_screen.dart';
 
 abstract class AppRouter {
   void push(BuildContext context, String routeName);
@@ -23,14 +22,5 @@ class GoRouterHelper implements AppRouter {
   }
 
   @override
-  RouterConfig<Object>? get routerConfig => GoRouter(
-        routes: <RouteBase>[
-          GoRoute(
-            path: '/',
-            builder: (BuildContext context, GoRouterState state) {
-              return const SplashScreen();
-            },
-          ),
-        ],
-      );
+  RouterConfig<Object>? get routerConfig => GoRoutes.routes;
 }
