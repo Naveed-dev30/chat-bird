@@ -1,22 +1,23 @@
 import 'package:chat_bird/app/const/app_colors.dart';
 import 'package:chat_bird/app/const/file_path_consts.dart';
-import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc.dart';
+import 'package:chat_bird/app/features/onboard/onboard_view.dart';
 import 'package:chat_bird/app/utils/extensions/on_num.dart';
+import 'package:chat_bird/app/utils/text_styles/heading_two/heading_two_text_style.dart';
+import 'package:chat_bird/app/utils/text_styles/text_2/text_two_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../../utils/text_styles/heading_three/heading_three_text_style.dart';
+import '../../../utils/text_styles/text_1/text_one_textstyle.dart';
 
 class OnboardScreen extends StatelessWidget {
-  OnboardScreen({super.key});
+  const OnboardScreen({super.key, required this.viewModel});
 
-  final newBloc = GetIt.I.get<SplashScreenBloc>();
+  final OnboardScreenViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    print(newBloc.isClosed);
     return Scaffold(
       backgroundColor: AppColors.grey37474F,
       body: SafeArea(
@@ -49,6 +50,7 @@ class OnboardScreen extends StatelessWidget {
                 width: 362.29.w,
                 height: 373.18.h,
                 child: PageView(
+                  onPageChanged: viewModel.changePageIndex,
                   children: FilePath.onboardImages.map(
                     (onboardImage) {
                       return SvgPicture.asset(onboardImage);
@@ -58,6 +60,41 @@ class OnboardScreen extends StatelessWidget {
               ),
 
               20.2.h.yBox,
+
+              ///[Page Title Description]
+              ValueListenableBuilder(
+                valueListenable: viewModel.pageViewCurrentIndex,
+                builder: (context, pageIndex, child) {
+                  var title = '';
+                  var discription = '';
+
+                  if (pageIndex == 0) {
+                    title = 'CONNECT ALL TIME';
+                    discription = 'connect all time';
+                  } else if (pageIndex == 1) {
+                    title = 'EASY CHATBOX';
+                    discription = 'easy chatbox';
+                  } else {
+                    title = 'MAKE FRIENDS';
+                    discription = 'make friends';
+                  }
+
+                  return Column(
+                    children: [
+                      Text(
+                        title,
+                        style: HeadingTwoTextStyle(),
+                      ),
+                      Text(
+                        discription,
+                        style: TextOneTextStyle().copyWith(
+                          color: AppColors.yellowFFC727,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
         ),

@@ -20,7 +20,9 @@ class GoRoutes {
       GoRoute(
         path: RoutePaths.onboard,
         builder: (BuildContext context, GoRouterState state) {
-          return OnboardScreen();
+          return OnboardScreen(
+            viewModel: DI.sl(),
+          );
         },
       ),
     ],
