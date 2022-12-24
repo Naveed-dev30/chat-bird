@@ -1,17 +1,22 @@
 import 'package:chat_bird/app/const/app_colors.dart';
 import 'package:chat_bird/app/const/file_path_consts.dart';
+import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc.dart';
 import 'package:chat_bird/app/utils/extensions/on_num.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../../utils/text_styles/heading_three/heading_three_text_style.dart';
 
 class OnboardScreen extends StatelessWidget {
-  const OnboardScreen({super.key});
+  OnboardScreen({super.key});
+
+  final newBloc = GetIt.I.get<SplashScreenBloc>();
 
   @override
   Widget build(BuildContext context) {
+    print(newBloc.isClosed);
     return Scaffold(
       backgroundColor: AppColors.grey37474F,
       body: SafeArea(

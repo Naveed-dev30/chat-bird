@@ -1,8 +1,7 @@
 import 'package:chat_bird/app/const/file_path_consts.dart';
-import 'package:chat_bird/app/di/di.dart';
 import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc.dart';
-import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc_events.dart';
 import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc_states.dart';
+import 'package:chat_bird/app/features/splash/splash_view_model.dart';
 import 'package:chat_bird/app/helpers/router/paths.dart';
 import 'package:chat_bird/app/helpers/router/router_helper.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
-  final SplashScreenBloc splashScreenBloc;
+  final SplashScreenViewModel splashScreenViewModel;
+  final AppRouter navigation;
+
   const SplashScreen({
     super.key,
-    required this.splashScreenBloc,
+    required this.splashScreenViewModel,
+    required this.navigation,
   });
 
   @override
@@ -24,21 +26,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    widget.splashScreenBloc.add(SplashScreenAppearedBlocEvent());
+    viewModel.splashScreenAppeared();
   }
 
   @override
   void dispose() {
-    widget.splashScreenBloc.close();
+    viewModel.dispose();
     super.dispose();
   }
 
-  final navigation = DI.sl<AppRouter>();
+  SplashScreenViewModel get viewModel => widget.splashScreenViewModel;
+  AppRouter get navigation => widget.navigation;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: widget.splashScreenBloc,
+      value: viewModel.splashScreenBloc,
       child: Scaffold(
         body: SizedBox(
           height: 812.h,
@@ -46,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Stack(
             children: [
               BlocConsumer<SplashScreenBloc, SplashScreenBlocState>(
-                listener: (context, state) => widget.splashScreenBloc,
+                listener: (context, state) => viewModel.splashScreenBloc,
                 builder: (context, state) {
                   return AnimatedPositioned(
                     onEnd: () => navigation.replaceAll(context, RoutePaths.onboard),

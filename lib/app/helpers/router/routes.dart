@@ -12,14 +12,15 @@ class GoRoutes {
         path: RoutePaths.initial,
         builder: (BuildContext context, GoRouterState state) {
           return SplashScreen(
-            splashScreenBloc: DI.sl(),
+            splashScreenViewModel: DI.sl(),
+            navigation: DI.sl(),
           );
         },
       ),
       GoRoute(
         path: RoutePaths.onboard,
         builder: (BuildContext context, GoRouterState state) {
-          return const OnboardScreen();
+          return OnboardScreen();
         },
       ),
     ],
