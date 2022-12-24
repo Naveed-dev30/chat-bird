@@ -3,7 +3,6 @@ import 'package:chat_bird/app/const/file_path_consts.dart';
 import 'package:chat_bird/app/features/onboard/onboard_view.dart';
 import 'package:chat_bird/app/utils/extensions/on_num.dart';
 import 'package:chat_bird/app/utils/text_styles/heading_two/heading_two_text_style.dart';
-import 'package:chat_bird/app/utils/text_styles/text_2/text_two_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,17 +65,17 @@ class OnboardScreen extends StatelessWidget {
                 valueListenable: viewModel.pageViewCurrentIndex,
                 builder: (context, pageIndex, child) {
                   var title = '';
-                  var discription = '';
+                  var description = '';
 
                   if (pageIndex == 0) {
                     title = 'CONNECT ALL TIME';
-                    discription = 'connect all time';
+                    description = 'connect all time';
                   } else if (pageIndex == 1) {
                     title = 'EASY CHATBOX';
-                    discription = 'easy chatbox';
+                    description = 'easy chatbox';
                   } else {
                     title = 'MAKE FRIENDS';
-                    discription = 'make friends';
+                    description = 'make friends';
                   }
 
                   return Column(
@@ -86,7 +85,7 @@ class OnboardScreen extends StatelessWidget {
                         style: HeadingTwoTextStyle(),
                       ),
                       Text(
-                        discription,
+                        description,
                         style: TextOneTextStyle().copyWith(
                           color: AppColors.yellowFFC727,
                         ),
@@ -94,6 +93,49 @@ class OnboardScreen extends StatelessWidget {
                     ],
                   );
                 },
+              ),
+
+              41.h.yBox,
+
+              /// [Lets Start & Rounds]
+              Container(
+                margin: EdgeInsets.only(right: 9.3.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    ///[Lets Start]
+                    Text(
+                      'Let\'s Start --->',
+                      style: TextOneTextStyle().copyWith(
+                        color: AppColors.yellowFFC727,
+                      ),
+                    ),
+                    25.7.h.yBox,
+
+                    ///[Rounds]
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [0, 1, 2]
+                          .map(
+                            (i) => ValueListenableBuilder(
+                              valueListenable: viewModel.pageViewCurrentIndex,
+                              builder: (context, pageIndex, _) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                                  width: 8.r,
+                                  height: 8.r,
+                                  decoration: BoxDecoration(
+                                    color: pageIndex == i ? AppColors.yellowFFC727 : AppColors.whiteFFFFFF,
+                                    borderRadius: BorderRadius.circular(8.r),
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
