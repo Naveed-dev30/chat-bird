@@ -1,4 +1,4 @@
-import 'package:chat_bird/app/features/onboard/onboard_view.dart';
+import 'package:chat_bird/app/features/onboard/onboard_viewmodel.dart';
 import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc.dart';
 import 'package:chat_bird/app/features/splash/splash_view_model.dart';
 import 'package:chat_bird/app/helpers/env/env_helper.dart';

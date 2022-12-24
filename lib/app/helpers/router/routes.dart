@@ -1,4 +1,5 @@
 import 'package:chat_bird/app/di/di.dart';
+import 'package:chat_bird/app/features/auth/views/phone_signin_view.dart';
 import 'package:chat_bird/app/features/onboard/views/onboard_screen.dart';
 import 'package:chat_bird/app/features/splash/views/splash_screen.dart';
 import 'package:chat_bird/app/helpers/router/paths.dart';
@@ -22,7 +23,14 @@ class GoRoutes {
         builder: (BuildContext context, GoRouterState state) {
           return OnboardScreen(
             viewModel: DI.sl(),
+            navigation: DI.sl(),
           );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.phoneAuth,
+        builder: (BuildContext context, GoRouterState state) {
+          return PhoneSignInScreen();
         },
       ),
     ],

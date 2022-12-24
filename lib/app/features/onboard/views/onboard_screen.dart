@@ -1,6 +1,8 @@
 import 'package:chat_bird/app/const/app_colors.dart';
 import 'package:chat_bird/app/const/file_path_consts.dart';
-import 'package:chat_bird/app/features/onboard/onboard_view.dart';
+import 'package:chat_bird/app/features/onboard/onboard_viewmodel.dart';
+import 'package:chat_bird/app/helpers/router/paths.dart';
+import 'package:chat_bird/app/helpers/router/router_helper.dart';
 import 'package:chat_bird/app/utils/extensions/on_num.dart';
 import 'package:chat_bird/app/utils/text_styles/heading_two/heading_two_text_style.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +13,17 @@ import '../../../utils/text_styles/heading_three/heading_three_text_style.dart';
 import '../../../utils/text_styles/text_1/text_one_textstyle.dart';
 
 class OnboardScreen extends StatelessWidget {
-  const OnboardScreen({super.key, required this.viewModel});
-
+  const OnboardScreen({
+    super.key,
+    required this.viewModel,
+    required this.navigation,
+  });
   final OnboardScreenViewModel viewModel;
+  final AppRouter navigation;
+
+  void navigateToAuthScreen(BuildContext context) {
+    navigation.replaceAll(context, RoutePaths.phoneAuth);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +114,13 @@ class OnboardScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     ///[Lets Start]
-                    Text(
-                      'Let\'s Start --->',
-                      style: TextOneTextStyle().copyWith(
-                        color: AppColors.yellowFFC727,
+                    InkWell(
+                      onTap: () => navigateToAuthScreen(context),
+                      child: Text(
+                        'Let\'s Start  -->',
+                        style: TextOneTextStyle().copyWith(
+                          color: AppColors.yellowFFC727,
+                        ),
                       ),
                     ),
                     25.7.h.yBox,

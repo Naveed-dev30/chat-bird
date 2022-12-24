@@ -3,4 +3,5 @@ class RoutePaths {
 
   static const initial = '/';
   static const onboard = '/onboard';
+  static const phoneAuth = '/phoneAuth';
 }
