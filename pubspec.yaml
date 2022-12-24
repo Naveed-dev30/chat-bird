@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Images
+  flutter_svg: ^1.1.6
+
   #Routing
   go_router: ^6.0.0
 
@@ -46,3 +49,12 @@ flutter:
     - assets/icons/app_icon/
     - assets/images/
     - assets/images/splash/
+    - assets/fonts/
+    - assets/images/onboard/
+    - assets/svgs/
+    - assets/svgs/onboard/
+
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/oswald.ttf
