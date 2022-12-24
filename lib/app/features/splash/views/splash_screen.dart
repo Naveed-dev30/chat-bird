@@ -50,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 builder: (context, state) {
                   return AnimatedPositioned(
                     onEnd: () => navigation.replaceAll(context, RoutePaths.onboard),
+                    curve: Curves.fastOutSlowIn,
                     duration: const Duration(seconds: 1),
                     top: state is SplashScreenBlocInitialState ? 0.h : 812.h,
                     child: SizedBox(
