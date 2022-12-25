@@ -17,6 +17,10 @@ abstract class PersistanceHelper {
 
   Future<num> getNum(String key);
 
+  Future<bool> getBool(String key);
+
+  Future<void> writeBool(String key, bool value);
+
   Future<Object> getObject(String key);
 
   Future<List<Object>> getObjectList(String key);
@@ -132,6 +136,26 @@ class HivePersistance implements PersistanceHelper {
 
   @override
   Future<void> writeString(String key, String value) async {
+    if (!isBoxOpened(imparativeValuesBox)) {
+      await openBox(imparativeValuesBox);
+    }
+
+    final box = getOpenedBox(imparativeValuesBox);
+    await box.put(key, value);
+  }
+
+  @override
+  Future<bool> getBool(String key) async {
+    if (!isBoxOpened(imparativeValuesBox)) {
+      await openBox(imparativeValuesBox);
+    }
+
+    final box = getOpenedBox(imparativeValuesBox);
+    return await box.get(key);
+  }
+
+  @override
+  Future<void> writeBool(String key, bool value) async {
     if (!isBoxOpened(imparativeValuesBox)) {
       await openBox(imparativeValuesBox);
     }
