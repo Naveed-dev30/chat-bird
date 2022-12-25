@@ -4,7 +4,7 @@ import 'package:chat_bird/app/features/splash/data/repository/splash_repository.
 
 class SplashRepositoryImp implements SplashRepository {
   @override
-  late final RemoteDataStore remoteDataStore;
+  late final NoRemoteDataStore remoteDataStore;
 
   @override
   late final SplashLocalDataStore localDataStore;
@@ -12,12 +12,12 @@ class SplashRepositoryImp implements SplashRepository {
   SplashRepositoryImp(this.localDataStore, this.remoteDataStore);
 
   @override
-  Future<void> setOnboardSeen() {
-    throw UnimplementedError();
+  Future<void> setOnboardSeen() async {
+    await localDataStore.setOnboardSeen();
   }
 
   @override
-  Future<bool> isOnboardSeen() {
-    throw UnimplementedError();
+  Future<bool> isOnboardSeen() async {
+    return await localDataStore.isOnboardSeen();
   }
 }
