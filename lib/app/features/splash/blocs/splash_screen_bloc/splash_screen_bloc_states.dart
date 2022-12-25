@@ -2,10 +2,20 @@ abstract class SplashScreenBlocState {}
 
 class SplashScreenBlocInitialState extends SplashScreenBlocState {}
 
-class SplashScreenBlocMoveToNextScreenState extends SplashScreenBlocState {
+class SplashScreenBlocMoveToOnboardState extends SplashScreenBlocState {
   @override
   bool operator ==(Object other) {
-    return other is SplashScreenBlocMoveToNextScreenState;
+    return other is SplashScreenBlocMoveToOnboardState;
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+class SplashScreenBlocMoveToAuthState extends SplashScreenBlocState {
+  @override
+  bool operator ==(Object other) {
+    return other is SplashScreenBlocMoveToAuthState;
   }
 
   @override
