@@ -31,16 +31,6 @@ class _FakeBox_0<E> extends _i1.SmartFake implements _i2.Box<E> {
         );
 }
 
-class _FakeObject_1 extends _i1.SmartFake implements Object {
-  _FakeObject_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 /// A class which mocks [HivePersistance].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -82,75 +72,50 @@ class MockHivePersistance extends _i1.Mock implements _i3.HivePersistance {
         ),
       ) as _i2.Box<dynamic>);
   @override
-  _i4.Future<_i2.Box<dynamic>> openBox(String? boxName) => (super.noSuchMethod(
+  _i4.Future<_i2.Box<dynamic>?> openBox(String? boxName) => (super.noSuchMethod(
         Invocation.method(
           #openBox,
           [boxName],
         ),
-        returnValue: _i4.Future<_i2.Box<dynamic>>.value(_FakeBox_0<dynamic>(
-          this,
-          Invocation.method(
-            #openBox,
-            [boxName],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Box<dynamic>>.value(_FakeBox_0<dynamic>(
-          this,
-          Invocation.method(
-            #openBox,
-            [boxName],
-          ),
-        )),
-      ) as _i4.Future<_i2.Box<dynamic>>);
+        returnValue: _i4.Future<_i2.Box<dynamic>?>.value(),
+        returnValueForMissingStub: _i4.Future<_i2.Box<dynamic>?>.value(),
+      ) as _i4.Future<_i2.Box<dynamic>?>);
   @override
-  _i4.Future<num> getNum(String? key) => (super.noSuchMethod(
+  _i4.Future<num?> getNum(String? key) => (super.noSuchMethod(
         Invocation.method(
           #getNum,
           [key],
         ),
-        returnValue: _i4.Future<num>.value(0),
-        returnValueForMissingStub: _i4.Future<num>.value(0),
-      ) as _i4.Future<num>);
+        returnValue: _i4.Future<num?>.value(),
+        returnValueForMissingStub: _i4.Future<num?>.value(),
+      ) as _i4.Future<num?>);
   @override
-  _i4.Future<Object> getObject(String? key) => (super.noSuchMethod(
+  _i4.Future<Object?> getObject(String? key) => (super.noSuchMethod(
         Invocation.method(
           #getObject,
           [key],
         ),
-        returnValue: _i4.Future<Object>.value(_FakeObject_1(
-          this,
-          Invocation.method(
-            #getObject,
-            [key],
-          ),
-        )),
-        returnValueForMissingStub: _i4.Future<Object>.value(_FakeObject_1(
-          this,
-          Invocation.method(
-            #getObject,
-            [key],
-          ),
-        )),
-      ) as _i4.Future<Object>);
+        returnValue: _i4.Future<Object?>.value(),
+        returnValueForMissingStub: _i4.Future<Object?>.value(),
+      ) as _i4.Future<Object?>);
   @override
-  _i4.Future<List<Object>> getObjectList(String? key) => (super.noSuchMethod(
+  _i4.Future<List<Object>?> getObjectList(String? key) => (super.noSuchMethod(
         Invocation.method(
           #getObjectList,
           [key],
         ),
-        returnValue: _i4.Future<List<Object>>.value(<Object>[]),
-        returnValueForMissingStub: _i4.Future<List<Object>>.value(<Object>[]),
-      ) as _i4.Future<List<Object>>);
+        returnValue: _i4.Future<List<Object>?>.value(),
+        returnValueForMissingStub: _i4.Future<List<Object>?>.value(),
+      ) as _i4.Future<List<Object>?>);
   @override
-  _i4.Future<String> getString(String? key) => (super.noSuchMethod(
+  _i4.Future<String?> getString(String? key) => (super.noSuchMethod(
         Invocation.method(
           #getString,
           [key],
         ),
-        returnValue: _i4.Future<String>.value(''),
-        returnValueForMissingStub: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
+        returnValue: _i4.Future<String?>.value(),
+        returnValueForMissingStub: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
   @override
   _i4.Future<void> initialise() => (super.noSuchMethod(
         Invocation.method(
@@ -234,14 +199,14 @@ class MockHivePersistance extends _i1.Mock implements _i3.HivePersistance {
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
-  _i4.Future<bool> getBool(String? key) => (super.noSuchMethod(
+  _i4.Future<bool?> getBool(String? key) => (super.noSuchMethod(
         Invocation.method(
           #getBool,
           [key],
         ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
   @override
   _i4.Future<void> writeBool(
     String? key,

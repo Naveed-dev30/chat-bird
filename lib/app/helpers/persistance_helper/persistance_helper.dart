@@ -13,17 +13,17 @@ abstract class PersistanceHelper {
 
   Future<void> writeObjectList(String key, List<Object> value);
 
-  Future<String> getString(String key);
+  Future<String?> getString(String key);
 
-  Future<num> getNum(String key);
+  Future<num?> getNum(String key);
 
-  Future<bool> getBool(String key);
+  Future<bool?> getBool(String key);
 
   Future<void> writeBool(String key, bool value);
 
-  Future<Object> getObject(String key);
+  Future<Object?> getObject(String key);
 
-  Future<List<Object>> getObjectList(String key);
+  Future<List<Object>?> getObjectList(String key);
 }
 
 /// [Implementation With Hive]
@@ -43,14 +43,14 @@ class HivePersistance implements PersistanceHelper {
     }
   }
 
-  Future<Box> openBox(String boxName) async {
+  Future<Box?> openBox(String boxName) async {
     final box = await Hive.openBox(boxName);
     _openBoxes[boxName] = box;
     return box;
   }
 
   @override
-  Future<num> getNum(String key) async {
+  Future<num?> getNum(String key) async {
     if (!isBoxOpened(imparativeValuesBox)) {
       await openBox(imparativeValuesBox);
     }
@@ -60,7 +60,7 @@ class HivePersistance implements PersistanceHelper {
   }
 
   @override
-  Future<Object> getObject(String key) async {
+  Future<Object?> getObject(String key) async {
     if (!isBoxOpened(imparativeValuesBox)) {
       await openBox(imparativeValuesBox);
     }
@@ -70,7 +70,7 @@ class HivePersistance implements PersistanceHelper {
   }
 
   @override
-  Future<List<Object>> getObjectList(String key) async {
+  Future<List<Object>?> getObjectList(String key) async {
     if (!isBoxOpened(key)) {
       await openBox(key);
     }
@@ -80,7 +80,7 @@ class HivePersistance implements PersistanceHelper {
   }
 
   @override
-  Future<String> getString(String key) async {
+  Future<String?> getString(String key) async {
     if (!isBoxOpened(imparativeValuesBox)) {
       await openBox(imparativeValuesBox);
     }
@@ -145,7 +145,7 @@ class HivePersistance implements PersistanceHelper {
   }
 
   @override
-  Future<bool> getBool(String key) async {
+  Future<bool?> getBool(String key) async {
     if (!isBoxOpened(imparativeValuesBox)) {
       await openBox(imparativeValuesBox);
     }
