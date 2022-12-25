@@ -19,7 +19,9 @@ void main() {
   });
 
   SplashScreenBloc buildBloc() {
-    return SplashScreenBloc(isOnboardSeenUsecase);
+    return SplashScreenBloc(
+      isOnboardSeenUsecase,
+    );
   }
 
   group('Splash Bloc Tests', () {

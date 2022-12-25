@@ -1,4 +1,5 @@
 import 'package:chat_bird/app/abstraction/remote_data_store.dart';
+import 'package:chat_bird/app/exceptions/persistance_exceptions.dart';
 import 'package:chat_bird/app/features/splash/data/data_store/local/splash_local_data_store.dart';
 import 'package:chat_bird/app/features/splash/data/repository/splash_repository.dart';
 
@@ -12,12 +13,11 @@ class SplashRepositoryImp implements SplashRepository {
   SplashRepositoryImp(this.localDataStore, this.remoteDataStore);
 
   @override
-  Future<void> setOnboardSeen() async {
-    await localDataStore.setOnboardSeen();
-  }
-
-  @override
   Future<bool> isOnboardSeen() async {
-    return await localDataStore.isOnboardSeen();
+    try {
+      return await localDataStore.isOnboardSeen();
+    } on NoPersistedValueFoundException {
+      return false;
+    }
   }
 }

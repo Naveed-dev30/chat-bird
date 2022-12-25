@@ -4,6 +4,4 @@ abstract class SplashLocalDataStore extends LocalDataStore {
   SplashLocalDataStore(super.persistanceHelper);
 
   Future<bool> isOnboardSeen();
-
-  Future<void> setOnboardSeen();
 }

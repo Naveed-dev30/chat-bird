@@ -23,6 +23,7 @@ class OnboardScreen extends StatelessWidget {
 
   void navigateToAuthScreen(BuildContext context) {
     navigation.replaceAll(context, RoutePaths.phoneAuth);
+    viewModel.setOnboardSeen();
   }
 
   @override

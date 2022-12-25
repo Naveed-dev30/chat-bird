@@ -52,7 +52,13 @@ class _SplashScreenState extends State<SplashScreen> {
                 listener: (context, state) => viewModel.splashScreenBloc,
                 builder: (context, state) {
                   return AnimatedPositioned(
-                    onEnd: () => navigation.replaceAll(context, RoutePaths.onboard),
+                    onEnd: () {
+                      if (state is SplashScreenBlocMoveToOnboardState) {
+                        navigation.replaceAll(context, RoutePaths.onboard);
+                      } else if (state is SplashScreenBlocMoveToAuthState) {
+                        navigation.replaceAll(context, RoutePaths.phoneAuth);
+                      }
+                    },
                     curve: Curves.fastOutSlowIn,
                     duration: const Duration(seconds: 1),
                     top: state is SplashScreenBlocInitialState ? 0.h : 812.h,
