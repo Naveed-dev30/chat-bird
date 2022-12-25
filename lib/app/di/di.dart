@@ -1,7 +1,9 @@
 import 'package:chat_bird/app/features/onboard/onboard_viewmodel.dart';
 import 'package:chat_bird/app/features/splash/blocs/splash_screen_bloc/splash_screen_bloc.dart';
+import 'package:chat_bird/app/features/splash/data/usecases/is_onboard_seen_usecase.dart';
 import 'package:chat_bird/app/features/splash/splash_view_model.dart';
 import 'package:chat_bird/app/helpers/env/env_helper.dart';
+import 'package:chat_bird/app/helpers/persistance_helper/persistance_helper.dart';
 import 'package:chat_bird/app/helpers/router/router_helper.dart';
 import 'package:get_it/get_it.dart';
 
@@ -18,6 +20,7 @@ class DI {
     /// [Helpers]
     GetIt.I.registerLazySingleton<Env>(() => DotEnvHelper());
     GetIt.I.registerLazySingleton<AppRouter>(() => GoRouterHelper());
+    GetIt.I.registerLazySingleton<PersistanceHelper>(() => HivePersistance());
 
     /// [ViewModels]
     GetIt.I.registerLazySingleton(() => SplashScreenViewModel(
@@ -29,6 +32,15 @@ class DI {
     /// [Blocs]
     ///
     /// [Splash Screen]
-    GetIt.I.registerLazySingleton<SplashScreenBloc>(() => SplashScreenBloc());
+    GetIt.I.registerLazySingleton<SplashScreenBloc>(
+      () => SplashScreenBloc(sl()),
+    );
+
+    /// [Usecases]
+    ///
+    /// [Splash Usecases]
+    GetIt.I.registerLazySingleton(
+      () => IsOnboardSeenUsecase(sl()),
+    );
   }
 }
