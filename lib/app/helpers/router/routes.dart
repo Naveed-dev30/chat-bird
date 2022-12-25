@@ -30,7 +30,7 @@ class GoRoutes {
       GoRoute(
         path: RoutePaths.phoneAuth,
         builder: (BuildContext context, GoRouterState state) {
-          return PhoneSignInScreen();
+          return PhoneSignInScreen(DI.sl());
         },
       ),
     ],

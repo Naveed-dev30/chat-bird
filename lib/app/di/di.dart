@@ -1,8 +1,11 @@
 import 'package:chat_bird/app/abstraction/local_data_store.dart';
 import 'package:chat_bird/app/abstraction/remote_data_store.dart';
+import 'package:chat_bird/app/features/auth/di/auth_feature_di.dart';
 import 'package:chat_bird/app/features/splash/di/splash_di.dart';
 import 'package:chat_bird/app/helpers/env/env_helper.dart';
 import 'package:chat_bird/app/helpers/persistance_helper/persistance_helper.dart';
+import 'package:chat_bird/app/helpers/remote_db_helper/remote_db_helper.dart';
+import 'package:chat_bird/app/helpers/remote_db_helper/remote_db_helper_imp.dart';
 import 'package:chat_bird/app/helpers/router/router_helper.dart';
 import 'package:get_it/get_it.dart';
 
@@ -19,6 +22,7 @@ class DI {
 
   static void inject() {
     /// [Helpers]
+    GetIt.I.registerLazySingleton<RemoteDBHelper>(() => FirebaseDBHelperImpl());
     GetIt.I.registerLazySingleton<Env>(() => DotEnvHelper());
     GetIt.I.registerLazySingleton<AppRouter>(() => GoRouterHelper());
     GetIt.I.registerLazySingleton<PersistanceHelper>(() => HivePersistance());
@@ -26,12 +30,13 @@ class DI {
     /// [Features]
     OnboardFeatureDi.inject();
     SplashFeatureDI.inject();
+    AuthFeatureDI.inject();
 
     /// [DataStores]
     ///
     /// [NoDataStore Object]
     GetIt.I.registerLazySingleton<NoRemoteDataStore>(
-      () => NoRemoteDataStore(),
+      () => NoRemoteDataStore(sl()),
     );
 
     GetIt.I.registerLazySingleton<NoLocalDataStore>(
