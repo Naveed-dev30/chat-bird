@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:chat_bird/app/helpers/router/router_helper.dart';
 import 'package:chat_bird/app/const/file_path_consts.dart';
 import 'package:chat_bird/app/di/di.dart';
