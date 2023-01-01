@@ -8,6 +8,7 @@ import 'app/helpers/persistance_helper/persistance_helper.dart';
 import 'app/helpers/remote_db_helper/remote_db_helper.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   DI.inject();
   await DI.sl<Env>().load(envFilePath: FilePath.ENV_PATH);
   await DI.sl<PersistanceHelper>().initialise();
